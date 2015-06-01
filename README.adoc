@@ -1,0 +1,29 @@
+= Generic Producer for CDI
+
+== Goal
+
+Be able to return Object in a producer
+
+== Usage
+
+[source,java]
+----
+@ApplicationScoped
+public class MyProducer1 {
+    @Produces
+    @MyProducerQualifier1
+    public Object create(final InjectionPoint ip) {
+        // your logic like myFactory.find(ip.getAnnotated().getAnnotation(MyFactory.class).value());
+    }
+}
+----
+
+[source,java]
+----
+@GenericQualifier
+@Qualifier
+@Target({ METHOD, FIELD })
+@Retention(RUNTIME)
+public @interface MyProducerQualifier1 {}
+----
+
